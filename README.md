@@ -40,7 +40,6 @@ curl -Ls https://astral.sh/uv/install.sh | sh
 ---
 
 ## 📁 Project Structure
-
 ```
 traffic-signal-project/
 ├── .venv/                        # Virtual environment directory (auto-created by uv)
@@ -59,8 +58,7 @@ traffic-signal-project/
 ├── pyproject.toml               # uv-compatible dependency file
 ├── README.md                    # Project documentation
 ├── uv.lock                      # uv-generated lock file
----
-
+```
 ## 🚀 Getting Started
 
 1. **Flash ESP8266 with Wi-Fi Mode sketch**
