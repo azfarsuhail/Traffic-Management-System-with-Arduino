@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Lights</title>
+    <style>
+        .traffic-light {
+            width: 120px;
+            height: 360px;
+            margin: 30px;
+            display: inline-block;
+            border: 4px solid #000;
+            border-radius: 12px;
+        }
+        .light {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            border-radius: 50%;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h2>Traffic Light Simulation</h2>
+    <div class="traffic-light" id="signal1">
+        <div class="light" id="signal1_red"></div>
+        <div class="light" id="signal1_yellow"></div>
+        <div class="light" id="signal1_green"></div>
+    </div>
+    <div class="traffic-light" id="signal2">
+        <div class="light" id="signal2_red"></div>
+        <div class="light" id="signal2_yellow"></div>
+        <div class="light" id="signal2_green"></div>
+    </div>
+
+    <script>
+        function updateLights() {
+            fetch('/get_signal_data')
+                .then(response => response.json())
+                .then(data => {
+                    const states = ['red', 'yellow', 'green'];
+                    states.forEach(color => {
+                        document.getElementById(`signal1_${color}`).style.backgroundColor = (data.signal1 === color) ? color : 'gray';
+                        document.getElementById(`signal2_${color}`).style.backgroundColor = (data.signal2 === color) ? color : 'gray';
+                    });
+                });
+        }
+
+        setInterval(updateLights, 500);
+    </script>
+</body>
+</html>
